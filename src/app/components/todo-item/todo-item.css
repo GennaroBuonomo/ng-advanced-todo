@@ -2,65 +2,91 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2d2d2d;
-  padding: 16px;
-  border-radius: 8px;
-  border-left: 4px solid #4a90e2;
-  transition: all 0.3s ease;
+  background: #141414;
+  border: 2px solid #333;
+  padding: 20px;
+  transition: all 0.2s ease;
 }
 
-/* Stile applicato dinamicamente quando task.completed è true */
+.task-item:hover {
+  border-color: #555;
+  transform: translateY(-2px); /* Effetto sollevamento */
+}
+
 .task-item.completed {
-  border-left-color: #4caf50;
-  opacity: 0.7;
+  opacity: 0.4;
+  border-color: #1f1f1f;
+  transform: translateY(0);
 }
 
-.task-item.completed .task-title {
-  text-decoration: line-through;
-  color: #888;
-}
-
-/* Raggruppa checkbox e testi a sinistra */
 .task-content {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
+/* --- CHECKBOX COMPLETAMENTE CUSTOM --- */
 .task-checkbox {
-  width: 20px;
-  height: 20px;
+  appearance: none;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
   cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all 0.2s;
 }
+
+/* Il quadratino interno verde che appare quando è checked */
+.task-checkbox::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #4aff8b;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+}
+
+.task-checkbox:checked::before {
+  transform: scale(1);
+}
+
+.task-checkbox:checked {
+  border-color: #4aff8b;
+}
+/* ------------------------------------- */
 
 .task-text-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .task-title {
-  font-size: 1.1rem;
-  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .task-date {
-  font-size: 0.8rem;
-  color: #aaa;
+  font-size: 0.85rem;
+  color: #777;
 }
 
 .btn-delete {
-  background-color: transparent;
-  color: #ff5252;
-  border: 1px solid #ff5252;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
+  background: transparent;
+  color: #ff3333;
+  border: 2px solid #ff3333;
+  padding: 10px 15px;
   font-weight: bold;
+  text-transform: uppercase;
+  font-family: inherit;
+  cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn-delete:hover {
-  background-color: #ff5252;
-  color: white;
+  background: #ff3333;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.4);
 }
