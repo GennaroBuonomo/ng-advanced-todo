@@ -36,6 +36,17 @@ export class TodoService {
    this.saveData(); // Salva nel localStorage il nuovo  array senza quel task
   } 
 
+  toggleTodo(id: string) {
+  // 1. Cerca il task specifico nell'array
+  const taskTrovato = this.todos.find(task => task.id === id);
+  
+  if (taskTrovato) {
+    // 2. Inverte il valore booleano (se è false diventa true, e viceversa)
+    taskTrovato.completed = !taskTrovato.completed;
+    this.saveData(); // 3. Salva la modifica nel browser
+  }
+}
+
   private saveData() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }

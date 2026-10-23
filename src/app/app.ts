@@ -27,4 +27,9 @@ export class App {
    this.todoService.deleteTodo(id); // 1. Il magazzino cancella il dato
    this.listaTask = this.todoService.getTodos(); // 2. Ricarichiamo la lista  aggiornata per l'HTML
   }
+
+  toggle(id: string) {
+   this.todoService.toggleTodo(id); // Diciamo al magazzino di invertire lo stato
+   this.listaTask = this.todoService.getTodos(); // Ricarichiamo i dati a schermo
+  }
 }

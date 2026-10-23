@@ -2,11 +2,11 @@
   <h1>La mia To-Do List</h1>
   
   <div>
-    <!-- 1. L'input e la Template Reference Variable -->
+    <!-- L'input e la Template Reference Variable -->
     <input #nuovoTask type="text" placeholder="Scrivi un task...">
     
-    <!-- 2. Il bottone e l'Event Binding -->
-    <button (click)="aggiungi(nuovoTask.value); nuovoTask.value = ''">
+    <!-- Il bottone e l'Event Binding -->
+    <button (click)="aggiungi(nuovoTask.value);   nuovoTask.value = ''">
       Aggiungi
     </button>
   </div>
@@ -14,10 +14,23 @@
   <hr>
 
   <ul>
-    <!-- 3. Il ciclo @for -->
+    <!-- Il ciclo @for -->
     @for (task of listaTask; track task.id) {
-      <li>
-        {{ task.title }}
+      <li style="margin-bottom: 10px;">
+        
+        <!-- 1. Checkbox per segnare il task come completato -->
+        <input type="checkbox" [checked]="task.completed" (change)="toggle(task.id)">
+        
+        <!-- 2. Testo del task con stile dinamico (sbarrato se completato) -->
+        <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
+          {{ task.title }}
+        </span>
+
+        <!-- 3. Bottone per eliminare -->
+        <button (click)="elimina(task.id)" style="margin-left: 10px; color: red;">
+          Elimina
+        </button>
+        
       </li>
     }
   </ul>
