@@ -22,4 +22,9 @@ export class App {
       this.todoService.addTodo(titolo);
     }
   }
+
+  elimina(id: string) {
+   this.todoService.deleteTodo(id); // 1. Il magazzino cancella il dato
+   this.listaTask = this.todoService.getTodos(); // 2. Ricarichiamo la lista  aggiornata per l'HTML
+  }
 }

@@ -30,6 +30,12 @@ export class TodoService {
     this.saveData();
   }
 
+  deleteTodo(id: string) {
+   // Sovrascrive l'array tenendo solo i task con un ID  diverso da quello cliccato
+   this.todos = this.todos.filter(task => task.id !== id);
+   this.saveData(); // Salva nel localStorage il nuovo  array senza quel task
+  } 
+
   private saveData() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
