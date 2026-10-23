@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { TodoService } from './services/todo'; 
 import { Todo } from './models/todo'; 
+import { TodoItem } from './components/todo-item/todo-item';
 
 @Component({
+  imports: [TodoItem],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -20,6 +22,7 @@ export class App {
   aggiungi(titolo: string) {
     if (titolo.trim() !== '') {
       this.todoService.addTodo(titolo);
+      this.listaTask = this.todoService.getTodos();
     }
   }
 

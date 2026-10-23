@@ -1,37 +1,20 @@
-<main>
-  <h1>La mia To-Do List</h1>
+<main class="app-container">
+  <h1 class="app-title">La mia To-Do List</h1>
   
-  <div>
-    <!-- L'input e la Template Reference Variable -->
-    <input #nuovoTask type="text" placeholder="Scrivi un task...">
-    
-    <!-- Il bottone e l'Event Binding -->
-    <button (click)="aggiungi(nuovoTask.value);   nuovoTask.value = ''">
+  <div class="input-section">
+    <input #nuovoTask type="text" class="task-input" placeholder="Scrivi un task...">
+    <button class="btn btn-primary" (click)="aggiungi(nuovoTask.value); nuovoTask.value = ''">
       Aggiungi
     </button>
   </div>
 
-  <hr>
-
-  <ul>
-    <!-- Il ciclo @for -->
+  <ul class="task-list">
     @for (task of listaTask; track task.id) {
-      <li style="margin-bottom: 10px;">
-        
-        <!-- 1. Checkbox per segnare il task come completato -->
-        <input type="checkbox" [checked]="task.completed" (change)="toggle(task.id)">
-        
-        <!-- 2. Testo del task con stile dinamico (sbarrato se completato) -->
-        <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
-          {{ task.title }}
-        </span>
-
-        <!-- 3. Bottone per eliminare -->
-        <button (click)="elimina(task.id)" style="margin-left: 10px; color: red;">
-          Elimina
-        </button>
-        
-      </li>
+      <app-todo-item 
+        [task]="task"
+        (cambiaStato)="toggle($event)"
+        (eliminaTask)="elimina($event)">
+      </app-todo-item>
     }
   </ul>
 </main>

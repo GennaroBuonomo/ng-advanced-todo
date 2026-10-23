@@ -1,0 +1,66 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d2d2d;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #4a90e2;
+  transition: all 0.3s ease;
+}
+
+/* Stile applicato dinamicamente quando task.completed è true */
+.task-item.completed {
+  border-left-color: #4caf50;
+  opacity: 0.7;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Raggruppa checkbox e testi a sinistra */
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.task-date {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: #ff5252;
+  border: 1px solid #ff5252;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #ff5252;
+  color: white;
+}
